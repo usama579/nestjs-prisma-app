@@ -2,8 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/main.js",
-      "use": "@vercel/node"
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**"]
+      }
     }
   ],
   "routes": [
@@ -12,5 +15,9 @@
       "dest": "dist/main.js"
     }
   ],
-  "outputDirectory": "dist"
+  "functions": {
+    "dist/main.js": {
+      "maxDuration": 30
+    }
+  }
 }
